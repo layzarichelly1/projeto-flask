@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container my-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center justify-content-center rounded-3 border shadow-lg">
+      <div class="container mt-4">
+        <div class="col-md-12 d-flex align-items-center justify-content-center py-4">
+        <form action="{{url_for('boletim')}}" method="post" class="text-center">
+          <div class="input-group mb-3 d-inline-flex">
+            <select name="ano" class="form-select" aria-label="Default select example">
+              <option value="-----" selected>-----</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+            <button type="submit" class="btn btn-success">Boletim</button>
+          </div>
+        </form>
+      </div>
+        <h2 class="text-center"><b>Boletim Escolar</b></h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Disciplina</th>
+              <th scope="col">N1</th>
+              <th scope="col">N2</th>
+              <th scope="col">N3</th>
+              <th scope="col">N4</th>
+            </tr>
+            {% for disciplina in boletim %}
+              <tr>
+                <td scope="row">{{disciplina['disciplina']}}</td>
+                <td scope="row">{{disciplina['nota_etapa_1']['nota']}}</td>
+                <td scope="row">{{disciplina['nota_etapa_2']['nota']}}</td>
+                <td scope="row">{{disciplina['nota_etapa_3']['nota']}}</td>
+                <td>{{disciplina['nota_etapa_4']['nota']}}</td>
+              </tr>
+            {% endfor %}
+          </thead>
+        </table>
+        <div class="row justify-content-center mt-3">
+          <div class="col-lg-7 text-center">
+            <p><a class="btn verdinho text-light" href="{{url_for('logout')}}">Logout</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

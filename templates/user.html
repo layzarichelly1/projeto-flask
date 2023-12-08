@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center justify-content-center rounded-3 border shadow-lg">
+            <div class="col-lg-7 p-3 p-lg-5 pt-lg-3 text-center">
+                <img class="border-imagem" src="https://suap.ifrn.edu.br{{ user_data['url_foto_150x200'] }}" alt="foto">
+                <h2 class="text-center">{{ user_data['nome_usual'] }}</h2>
+                <a href="{{url_for('boletim')}}" class="sem-decoracao btn verdinho text-light">Boletim</a>
+                  <div class="container my-5">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="2">
+                                    <h2>Dados Gerais</h2>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for field in user_data %}
+                                {% if field not in ['url_foto_75x100', 'url_foto_150x200'] %}
+                                    {% if field != 'vinculo' %}
+                                        <tr>
+                                            <td class="text-start fw-bold">{{ field }}</td>
+                                            <td class="text-start">{{ user_data[field] }}</td>
+                                        </tr>
+                                    {% else %}
+                                        {% for subfield, subvalue in user_data['vinculo'].items() %}
+                                            <tr>
+                                                <td class="text-start fw-bold">{{ subfield }}</td>
+                                                <td class="text-start">{{ subvalue }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <p><a class="btn verdinho text-light" href="{{url_for('logout')}}">Logout</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock %}

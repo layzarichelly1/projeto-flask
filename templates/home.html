@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center align-items-center vh-100">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+                    <div class="card-border-0 shadow rounded-2 my-5">
+                        <div class="card-body p-4 p-sm-5">
+                            <div class="text-center">
+                                <img src="{{ url_for('static', filename='img/IFRNLOGOSPARACAMPUSHORZ_VERT.4548350b756d404498b6.png') }}" style="width: 60%;" alt="logo ifrn">
+                                <h5 class="mt-4 mb-4 fw-light">Boletim</h5>
+                                <div class="d-grid gap-2 col-6 mx-auto">
+                                    <button class="btn verdinho" type="button"><a href="{{ url_for('login')}}" class="sem-decoracao">Entrar</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
